@@ -10,6 +10,7 @@
 static const char DIVISION_CODE = '/';
 class DivisionOperation : public AbstractOperation{
 public:
+    // Preforms division
     int Perform(int lhs, int rhs) override {return lhs/rhs;};
     DivisionOperation() : AbstractOperation(DIVISION_CODE) {};
 

@@ -10,8 +10,11 @@
 static const char MULTIPLICATION_CODE = '*';
 class MultiplicationOperation : public AbstractOperation{
 public:
+    // Performs multiplication
     int Perform(int lhs, int rhs) override {return lhs*rhs;};
     MultiplicationOperation() : AbstractOperation(MULTIPLICATION_CODE) {};
+
+    ~MultiplicationOperation() {};
 };
 
 

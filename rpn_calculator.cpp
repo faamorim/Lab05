@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// Return an Operation pointer given the char input.
+// If the given char input is not a valid operation return a null pointer.
 Operation * RpnCalculator::operation_type(int type) const {
     switch (type){
         case ADDITION_CODE:
@@ -23,6 +25,9 @@ Operation * RpnCalculator::operation_type(int type) const {
     }
 }
 
+// Removes the two top integers from the stack, and perform the current given operation on them.
+// The top most element in the stack is the right had side operand,
+// and the second top most element is the left hand side operand.
 void RpnCalculator::Perform(Operation *op) {
     int rhs = stack.top();
     stack.pop();
@@ -32,7 +37,7 @@ void RpnCalculator::Perform(Operation *op) {
     stack.push(op->Perform(lhs, rhs));
 }
 
-
+// Reads a string input and process it in Reverse Polish Notation.
 int RpnCalculator::ProcessForm(std::string form) {
     istringstream iss{form};
     string s;
@@ -50,8 +55,10 @@ int RpnCalculator::ProcessForm(std::string form) {
             cout << " is a char." << endl;
             Operation *op = operation_type(c);
             if(op == nullptr){
-                cerr << "WRONG INPUT! CHAR INPUT IS NOT A VALID OPERATION!" << endl;
-                cout << "WRONG INPUT! CHAR INPUT IS NOT A VALID OPERATION!" << endl;
+                ostringstream error;
+                error << "INVALID INPUT! CHAR " << c << " IS NOT A VALID OPERATION!";
+                cerr << error.str() << endl;
+                cout << error.str() << endl;
                 return 0;
             }
             Perform(op);
