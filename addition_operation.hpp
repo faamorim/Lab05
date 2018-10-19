@@ -7,9 +7,9 @@
 
 #include "abstract_operation.hpp"
 
-static const char ADDITION_CODE = '+';
 class AdditionOperation : public AbstractOperation{
 public:
+    static const char ADDITION_CODE = '+';
     // Performs addition
     int Perform(int lhs, int rhs) override {return lhs+rhs;};
     AdditionOperation() : AbstractOperation(ADDITION_CODE) {};

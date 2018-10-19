@@ -7,9 +7,9 @@
 
 #include "abstract_operation.hpp"
 
-static const char MULTIPLICATION_CODE = '*';
 class MultiplicationOperation : public AbstractOperation{
 public:
+    static const char MULTIPLICATION_CODE = '*';
     // Performs multiplication
     int Perform(int lhs, int rhs) override {return lhs*rhs;};
     MultiplicationOperation() : AbstractOperation(MULTIPLICATION_CODE) {};

@@ -8,26 +8,31 @@
 
 using namespace std;
 
-// Return an Operation pointer given the char input.
-// If the given char input is not a valid operation return a null pointer.
-Operation * RpnCalculator::operation_type(int type) const {
+/* Return an Operation pointer given the char input.
+ * If the given char input is not a valid operation return a null pointer.
+ * @param - type - character that represents an operation
+ * @return - a pointer to an operation identified by the given char
+ */
+Operation * RpnCalculator::operation_type(char type) const {
     switch (type){
-        case ADDITION_CODE:
+        case AdditionOperation::ADDITION_CODE:
             return new AdditionOperation();
-        case SUBTRACTION_CODE:
+        case SubtractionOperation::SUBTRACTION_CODE:
             return new SubtractionOperation();
-        case MULTIPLICATION_CODE:
+        case MultiplicationOperation::MULTIPLICATION_CODE:
             return new MultiplicationOperation();
-        case DIVISION_CODE:
+        case DivisionOperation::DIVISION_CODE:
             return new DivisionOperation();
         default:
             return nullptr;
     }
 }
 
-// Removes the two top integers from the stack, and perform the current given operation on them.
-// The top most element in the stack is the right had side operand,
-// and the second top most element is the left hand side operand.
+/* Removes the two top integers from the stack, and perform the current given operation on them.
+ * The top most element in the stack is the right had side operand,
+ * and the second top most element is the left hand side operand.
+ * @param - op - a pointer to the operation that should be executed next.
+ */
 void RpnCalculator::Perform(Operation *op) {
     int rhs = stack.top();
     stack.pop();
@@ -37,7 +42,10 @@ void RpnCalculator::Perform(Operation *op) {
     stack.push(op->Perform(lhs, rhs));
 }
 
-// Reads a string input and process it in Reverse Polish Notation.
+/* Reads a string input and process it in Reverse Polish Notation.
+ * @param - form - the string formula to be calculated
+ * @return - an int that represents the result of the calculated formula
+ */
 int RpnCalculator::ProcessForm(std::string form) {
     istringstream iss{form};
     string s;

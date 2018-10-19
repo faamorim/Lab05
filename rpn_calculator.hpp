@@ -16,10 +16,10 @@ class RpnCalculator {
 public:
     int ProcessForm(std::string);
 private:
-    int result;
+    int result = 0;
     std::stack<int> stack;
     void Perform(Operation*);
-    Operation* operation_type(int) const;
+    Operation* operation_type(char) const;
 };
 
 

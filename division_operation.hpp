@@ -7,9 +7,9 @@
 
 #include "abstract_operation.hpp"
 
-static const char DIVISION_CODE = '/';
 class DivisionOperation : public AbstractOperation{
 public:
+    static const char DIVISION_CODE = '/';
     // Preforms division
     int Perform(int lhs, int rhs) override {return lhs/rhs;};
     DivisionOperation() : AbstractOperation(DIVISION_CODE) {};
